@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bingo Epic</title>
+    <link rel="icon" type="image/svg" href="/favicon.svg"/>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="fondo-gradiente"></div>
+    <div class="logo-epic">
+        <img src="./assets/Bingo Epic.svg" alt="">
+    </div>
+    <div class="inputs_remplaza" id="inputs_remplaza">
+        <div class="principal_bola_azul">
+            <img src="./assets/bola8azul512.png" alt="" style="width: 300px;">
+        </div>
+        <div class="principal_blanca">
+            <h4 style="margin-top: 5px;">Elija el tipo de Sorteo</h4>
+        </div>
+        <div class="principal_div_boton">
+            <button onclick="mostrarContenedor()" class="principal_boton">CON Repetición</button>
+            <button onclick="mostrarContenedor()" class="principal_boton">SIN Repetición</button>
+        </div>
+        <div class="principal_div_img_bolas">
+            <img src="/assets/bolas.png" alt="" style="width: 281px;">
+        </div>
+        <!-- <div class="principal_div_boton_comousa">
+            <button class="principal_boton_comousa">¿Cómo se usa?</button>
+        </div> -->
+        <!-- <label for="input1">Num 1</label>
+        <input type="number" id="input1" class="input_remplaza_array">
+        <label for="input2">Num 2</label>
+        <input type="number" id="input2" class="input_remplaza_array">
+        <label for="input3">Num 3</label>
+        <input type="number" id="input3" class="input_remplaza_array">
+        <label for="input4">Num 4</label>
+        <input type="number" id="input4" class="input_remplaza_array">
+        <label for="input5">Num 5</label>
+        <input type="number" id="input5" class="input_remplaza_array">
+        <button onclick="mostrarContenedor()">Agregar</button> -->
+    </div>
+    <div class="contenedor" id="contenedor" style="display: none;">
+        <div class="franja_inicial"></div>
+        <div class="titulo">
+            <h4 class="letra_titulo">SIN REPETICION</h6>
+        </div>
+        <div class="inputs">
+            <div class="input">
+                <h6>Desde</h6>
+                <input class="ingreso" type="number" pattern="-?[0-9]*" id="inicio">
+            </div>
+            <div class="input">
+                <h6>Hasta</h6>
+                <input class="ingreso" type="number" pattern="-?[0-9]*"  id="fin">
+            </div>
+        </div>
+        <div class="tiradas">
+            <!-- <h5 class="tiradas_infinitas">Tiradas infinitas</h5>
+            <img class="check_tiradas" src="/assets/check_invert.png" alt=""> -->
+        </div>
+        <div class="toque_b">
+            <h5 class="toque_bola">Toque la bola para tirar</h5>
+        </div>
+        <div class="bolillero">
+            <div class="bolilla">
+                <img src="/assets/bl.png" id="fondo_bolilla" alt="" width="250px" >
+            </div>
+            <div class="bolilla_text" id="startButton">
+                <h1 id="mitexto" class="mitexto"></h1>
+            </div>
+            <div class="scroll_bolillero" id="scroll_bolillero">
+            </div>
+        </div>
+        <div class="div_text_bolillas">
+            <div class="div_text">
+                <h2 id="text_bolillas" class="text_bolillas">Bolilla: 0</h2>
+            </div>
+            <div class="select_bolilla" id="select_bolilla" style="display: none;">
+                <div class="bolas_miniatura">
+                    <img class="bolita_miniatura" id="bol1" src="/assets/bl.png" >
+                    <img class="bolita_miniatura" id="bol2" src="/assets/mandala.png" >
+                    <img class="bolita_miniatura" id="bol3" src="/assets/basquet.png" >
+                    <img class="bolita_miniatura" id="bol4" src="/assets/navidad.png" >
+                    <img class="bolita_miniatura" id="bol5" src="/assets/blverde.png" >
+                    <img class="bolita_miniatura" src="/assets/elegir.png" >
+                </div>
+                <div class="select_botones">
+                    <button onclick="cancelarSelect()" class="select_botones_bolitas">Aceptar</button>
+                    <button onclick="cancelarSelect()" class="select_botones_bolitas">Cancelar</button>
+                </div>
+            </div>
+        </div>
+        <div class="div_imagen_bolillas">
+            <img src="/assets/deco0.png" alt="" class="imagen_bolillas">
+        </div>
+        <div class="div_boton_reiniciar">
+            <button class="boton_reiniciar" onclick="resetearNumeros()">Reiniciar Todo</button>
+            <div class="hablar">Hablar 
+                <img class="div_check" src="/assets/check.png" alt="">
+            </div>
+        </div>
+        <!-- <div class="banner" >
+            <img class="banner" src="/assets/banner1.png" alt="" id="banner">
+        </div> -->
+        <!-- <label for="inicio">Inicio:</label>
+    <input type="number" id="inicio" required>
+    <label for="fin">Fin:</label>
+    <input type="number" id="fin" required>
+    <div class="cajaNum">
+        <h1 id="mitexto"></h1>
+    </div> -->
+
+    <!-- <button id="startButton">sortear</button> -->
+    </div>
+    <script src="./js/main"></script>
+</body>
+</html>

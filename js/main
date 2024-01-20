@@ -1,0 +1,357 @@
+
+
+let elementos = [];
+var isSorting = false;
+const container = document.getElementById('scroll_bolillero');
+let divCount = 0;
+let isDragging = false;
+let initialY;
+let initialScrollY;
+let valorScrollDiv = 0;
+
+const imagenesGrupo = [
+    'banner1.png',
+    'banner2.png',
+    'banner3.png',
+    'banner4.png',
+];
+
+// Imágenes fuera del grupo
+const imagenFueraGrupo = '/assests/banner_black.png';
+
+const miDiv = document.getElementById('startButton');
+
+let tiempoDePresion;
+
+miDiv.addEventListener('touchstart', function (event) {
+
+    tiempoDePresion = setTimeout(function () {
+        // Coloca aquí el código que deseas ejecutar cuando se mantiene presionado el div en un entorno táctil.
+        mostrarSelectBolillas();
+        cambiarImagenBolilla("bol1", "bl.png");
+        cambiarImagenBolilla("bol2", "mandala.png");
+        cambiarImagenBolilla("bol3", "basquet.png");
+        cambiarImagenBolilla("bol4", "navidad.png");
+        cambiarImagenBolilla("bol5", "blverde.png");
+    }, 500); // Puedes ajustar el tiempo de presión según tus necesidades.
+});
+
+miDiv.addEventListener('touchend', function (event) {
+    clearTimeout(tiempoDePresion);
+});
+
+function cancelarSelect() {
+    const contenenedorSelect = document.getElementById('select_bolilla')
+    contenenedorSelect.style.display = 'none';
+}
+
+function cambiarImagenBolilla(bol, url) {
+    const imagen = document.getElementById("fondo_bolilla");
+    const boton = document.getElementById(bol)
+
+    boton.addEventListener('click', function () {
+        imagen.src = url;
+    });
+}
+
+//  function agregarNumeroAlArray() {
+//         const input1 = parseInt(document.getElementById('input1').value);
+//         const input2 = parseInt(document.getElementById('input2').value);
+//         const input3 = parseInt(document.getElementById('input3').value);
+//         const input4 = parseInt(document.getElementById('input4').value);
+//         const input5 = parseInt(document.getElementById('input5').value);
+
+//         buscarNumeroRemplazar(input1);
+//         buscarNumeroRemplazar(input2);
+//         buscarNumeroRemplazar(input3);
+//         buscarNumeroRemplazar(input4);
+//         buscarNumeroRemplazar(input5);
+
+//  }
+
+function buscarNumeroRemplazar(input1) {
+    for (var i = 0; i <= elementos.length; i++) {
+        if (elementos[i] === input1) {
+            elementos.splice([i], 1);
+            elementos.push(input1);
+        }
+    }
+}
+
+function mostrarSelectBolillas() {
+    const contenenedorSelect = document.getElementById('select_bolilla')
+    contenenedorSelect.style.display = 'block';
+}
+
+function mostrarContenedor() {
+    const contenedor = document.getElementById('contenedor')
+    const inputs = document.getElementById('inputs_remplaza')
+    contenedor.style.display = 'flex';
+    inputs.style.display = 'none';
+}
+
+function scrollToBottom() {
+    container.scrollTop = 0;
+}
+
+container.addEventListener('touchstart', (e) => {
+    isDragging = true;
+    initialY = e.touches[0].clientY; // Usar e.touches para obtener la posición del primer dedo.
+    initialScrollY = container.scrollTop;
+});
+
+document.addEventListener('touchmove', (e) => {
+    if (isDragging) {
+        const deltaY = e.touches[0].clientY - initialY;
+        container.scrollTop = initialScrollY - deltaY;
+    }
+});
+
+document.addEventListener('touchend', () => {
+    isDragging = false;
+});
+
+
+// document.getElementById("fin").addEventListener("change", function() {
+// activarBolillero();
+// generarArray();
+// var buton = document.getElementById("startButton");
+//             buton.disabled = false;
+// });
+
+function generarArray() {
+    const inicio = parseInt(document.getElementById("inicio").value);
+    const fin = parseInt(document.getElementById("fin").value);
+    let distancia = fin - inicio;
+    if (distancia <= 3000) {
+        if (!isNaN(inicio) && !isNaN(fin) && inicio <= fin) {
+            elementos = [];
+            for (let i = inicio; i <= fin; i++) {
+                elementos.push(i);
+                mezclarArray(elementos);
+                //agregarNumeroAlArray();
+            }
+
+        }
+    } else {
+        if (!isNaN(inicio) && !isNaN(fin) && inicio <= fin) {
+            elementos = [];
+            for (let i = inicio; i <= fin; i += 70) {
+                elementos.push(i);
+                mezclarArray(elementos);
+                //agregarNumeroAlArray();
+            }
+
+        }
+
+    }
+
+}
+
+function activarBolillero() {
+    const startButton = document.getElementById("startButton");
+    startButton.addEventListener("click", startButtonClickHandler);
+}
+
+function desactivarInputs() {
+    let inicio = document.getElementById("inicio");
+    let fin = document.getElementById("fin");
+    inicio.readOnly = true;
+    fin.readOnly = true;
+}
+
+function startButtonClickHandler() {
+    if (!isSorting) {
+        isSorting = true;
+        mostrarAnimacion();
+        cancelarSelect();
+        desactivarInputs();
+    }
+};
+
+function sortearNumero() {
+    var ramdoms = elementos[0];
+    var h1 = document.getElementById("mitexto");
+    h1.textContent = elementos[0];
+    hablarTexto(elementos[0]);
+    agregarNuevoDiv(elementos[0]);
+    elementos.splice(0, 1);
+    console.log("elementos: " + elementos.length);
+    console.log("aray" + elementos);
+    console.log("quedan" + elementos.length);
+    if (elementos.length === 0) {
+        startButton.removeEventListener("click", startButtonClickHandler);
+        enviarUnoDos();
+    }
+}
+
+// function sortearNumero(){
+//     var ramdoms = Math.floor(Math.random()*elementos.length);
+//     var h1 = document.getElementById("mitexto");
+//     h1.textContent = elementos[ramdoms];
+//     //hablarTexto(elementos[ramdoms]);
+//     agregarNuevoDiv(elementos[ramdoms]);
+//     callflutter(elementos[ramdoms]);
+//     elementos.splice(ramdoms,1);
+//     console.log("quedan"+elementos.length);
+//     if(elementos.length == 0){
+//         startButton.removeEventListener("click", startButtonClickHandler);
+//     }
+// }
+
+
+function hablarTexto(numero) {
+    const synth = window.speechSynthesis;
+
+    //Convierte el número a texto
+    const numeroTexto = numero.toString();
+
+    // Crea un objeto SpeechSynthesisUtterance
+    const utterance = new SpeechSynthesisUtterance(numeroTexto);
+
+    // Selecciona el idioma
+    utterance.lang = 'es-ES'; // Puedes ajustar el idioma según tus necesidades.
+
+    // Habla el número
+    synth.speak(utterance);
+}
+
+function mostrarAnimacion() {
+    //mezclarArray(elementos);
+    var intervalID = setInterval(mostrarSiguienteElemento, 35);
+
+    var h1 = document.getElementById("mitexto");
+    var indice = 0;
+
+
+    function mostrarSiguienteElemento() {
+        var ramdoms = Math.floor(Math.random() * elementos.length);
+        if (indice < 40) {
+            h1.textContent = elementos[ramdoms];
+            indice++;
+        } else {
+            clearInterval(intervalID);// Detener el intervalo cuando se muestran todos los elementos.
+            isSorting = false;
+            sortearNumero();
+        }
+    }
+
+
+}
+function mezclarArray(arr) {
+    for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]]; // Intercambiar elementos
+    }
+}
+
+function agregarNuevoDiv(numero) {
+    const contadorbolillas = document.getElementById('text_bolillas');
+    const container = document.getElementById('scroll_bolillero');
+    const newDiv = document.createElement('div');
+    if (valorScrollDiv === 0) {
+        newDiv.className = 'box-sin-linea';
+        console.log("estamos aqui 1");
+        valorScrollDiv++;
+    } else {
+        newDiv.className = 'box';
+        console.log("estamos aqui 2");
+    }
+    newDiv.textContent = numero;
+    // Obtener el primer hijo del contenedor
+    const firstChild = container.firstChild;
+
+    // Insertar el nuevo div antes del primer hijo
+    container.insertBefore(newDiv, firstChild);
+
+    divCount++;
+    scrollToBottom();
+    contadorbolillas.textContent = `Bolilla: ${divCount}`;
+}
+function resetearNumeros() {
+    location.reload();
+}
+
+function resetearDivScroll() {
+    const container = document.getElementById('scroll_bolillero');
+    while (container.firstChild) {
+        container.removeChild(container.firstChild);
+    }
+    divCount = 0;
+    const contadorbolillas = document.getElementById('text_bolillas');
+    contadorbolillas.textContent = `Bolilla: ${divCount}`;
+}
+
+document.getElementById("fin").addEventListener("change", function () {
+    resetearDivScroll();
+    activarBolillero();
+    var buton = document.getElementById("startButton");
+    buton.disabled = false;
+
+    fetch('http://192.168.0.231:8060/listar')
+        .then(response => response.json()) // Convierte la respuesta en un objeto JSON
+        .then(data => {
+            // Accede a la propiedad "numeros" y divídela en un array
+            numerosArray = []
+
+            numerosArray = data[0].numeros.split(',').map(Number);
+            if (numerosArray.length <= 5) {
+                generarArray();
+            } else {
+                elementos = numerosArray;
+                enviarUnoDos();
+            }
+
+            // Ahora elementos contiene los números en un array
+            console.log(elementos);
+        })
+        .catch(error => {
+            console.error('Error al obtener los datos:', error);
+            generarArray();
+        });
+    //generarArray();
+    var buton = document.getElementById("startButton");
+    buton.disabled = false;
+});
+
+function enviarUnoDos() {
+    var id = 1
+    var nuevoNumero = "1,2"
+
+    var url = "http://192.168.0.231:8060/update?id=" + id + "&nuevoNumero=" + nuevoNumero;
+
+    fetch(url, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        }
+    })
+        .then(data => {
+            console.log(data); // Puedes manejar la respuesta de la API aquí
+            //alert("Numeros enviados correctamente");
+        })
+        .catch(error => {
+            console.error(error);
+            //alert("Error al enviar Numeros");
+        });
+}
+
+// function cambiarBannerTresMinutos(){
+//     // Función para elegir una imagen aleatoria
+//     function elegirImagenAleatoria() {
+//         const indiceAleatorio = Math.floor(Math.random() * imagenesGrupo.length);
+//         const imagenAleatoria = imagenesGrupo[indiceAleatorio];
+//         document.getElementById('banner').src = imagenAleatoria;
+//     }
+//     // Cambiar a una imagen fuera del grupo después de 40 segundos
+//     setTimeout(function () {
+//         document.getElementById('banner').src = imagenFueraGrupo;
+//     }, 40000);
+// }
+// // Llamar a la función para elegir una imagen aleatoria cada 10 segundos
+// //setInterval(elegirImagenAleatoria, 10000);
+
+// // Inicialmente, elegir una imagen aleatoria
+// cambiarBannerTresMinutos();
+// setInterval(cambiarBannerTresMinutos, 180000);
+

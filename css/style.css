@@ -1,0 +1,390 @@
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@200;300;400;500;600;700;800;900&display=swap');
+*{
+	outline: none;
+	margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+	font-family: 'League Spartan';
+}
+
+body{
+	display: flex;
+	flex-direction: column;
+	user-select: none;
+	place-items: center;
+	background-color: black;
+	justify-content: center;
+	overflow: hidden;
+}
+.logo-epic{
+	display: flex;
+	width: 400px;
+	height: 150px;
+	align-items: center;
+	justify-content: center;
+}
+.fondo-gradiente{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(ellipse 80% 80% at 50% -20%, rgba(132, 2, 218, 0.5) , rgba(255,255,255,0) );
+    z-index: -1;
+}
+.inputs_remplaza{
+	display: flex;
+	flex-direction: column;
+	place-items: center;
+	border-radius: 25px;
+	padding: 7px;
+	width: 364px;
+	height: 650px;
+	background-color: black;
+	overflow: hidden;
+	color: aliceblue;
+	box-shadow: 2px 2px 20px 5px rgba(132, 2, 218, 0.5);
+}
+.input_remplaza_array{
+	width: 40px;
+	height: 20px;
+}
+.principal_bola_azul{
+	display: grid;
+	width: 350px;
+	height: 350px;
+	place-items: center;
+	justify-content: center;
+}
+.principal_blanca{
+	display: grid;
+	place-items: center;
+	text-align: center;
+	width: 340px;
+	height: 29px;
+	background-color: white;
+	color: black;
+	font-size: 25px;
+	border-radius: 10px;
+}
+h4{
+	font-weight: 600;
+}
+.principal_div_boton{
+	display: flex;
+	place-items: center;
+	width: 350px;
+	height: 60px;
+	gap: 30px;
+}
+.principal_boton{
+	margin: 5px;
+	width: 155px;
+	height: 40px;
+	color: white;
+	background-color: #4B4B4B;
+	border: none;
+	font-size: 19px;
+	font-weight: 600;
+	border-radius: 20px;
+}
+.principal_div_img_bolas{
+	margin-top: 35px;
+
+	text-align: center;
+	width: 350px;
+	height: 113px;
+}
+.principal_div_boton_comousa{
+	text-align: center;
+	width: 350px;
+	height: 50px;
+}
+.principal_boton_comousa{
+	margin: 5px;
+	width: 110px;
+	height: 36px;
+	color: white;
+	background-color: #d6d8d7;
+	border: none;
+	font-size: 15px;
+	font-weight: 500;
+}
+.contenedor{
+	display: flex;
+	flex-direction: column;
+	place-items: center;
+	padding: 7px;
+	width: 364px;
+	background-color: black;
+	border-radius: 25px;
+	height: 650px;
+	overflow: hidden;
+	box-shadow: 2px 2px 20px 5px rgba(132, 2, 218, 0.5);
+}
+
+.cajaNum{
+	width: 100px;
+	height: 100px;
+	background-color: #9567E6;
+}
+.franja_inicial{
+	height: 20px;
+}
+.titulo{
+	display: grid; /* Utilizamos el modelo de caja flexible (flexbox) */
+    justify-content: center; /* Centramos horizontalmente el contenido */
+    align-items: center;
+	width: 340px;
+	height: 21px;
+	background-color: #4B4B4B;
+	color: aqua;
+	overflow: hidden;
+	border-radius: 20px;
+}
+.letra_titulo{
+	position: relative;
+	font-weight: 600;
+	top: 2px;
+	font-size: 20px;
+}
+.inputs{
+	display: flex; /* Utilizamos el modelo de caja flexible (flexbox) */
+    justify-content: center; /* Centramos horizontalmente el contenido */
+    align-items: center;
+	width: 350px;
+	height: 90px;
+	color: white;
+	gap: 20px;
+	overflow: hidden;
+}
+.input{
+	text-align: center;
+}
+.ingreso{
+	width: 160px;
+	height: 55px;
+	border-radius: 10px;
+	border: none;
+	outline: none;
+	font-size: 30px;
+	font-weight: 600;
+	text-align: center;
+}
+
+.ingreso:focus {
+    border: none !important;
+}
+
+.ingreso::-webkit-inner-spin-button,
+.ingreso::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+h6{
+	font-size: 18px;
+	font-weight: 300;
+}
+.toque_b{
+	text-align: center;
+}
+.toque_bola{
+	color: aqua;
+	font-size: 17px;
+	font-weight: 400;
+}
+.tiradas{
+	display: flex;
+	overflow: hidden;
+	width: 350px;
+	height: 35px;
+}
+.check_tiradas{
+	position: relative;
+	left: 25px;
+	width: 40px;
+	height: 27px;
+}
+.tiradas_infinitas{
+	position: relative;
+	width: 100px;
+	top: 5px;
+	left: 5px;
+	text-align: start;
+	color: aqua;
+	font-size: 16px;
+	font-weight: 200;
+}
+.bolillero{
+	display: flex;
+	position: relative;
+	overflow: hidden;
+	width: 350px;
+	height: 270px;
+}
+.bolilla{
+	position: relative;
+	top: 10px;
+	left: 5px;
+	width: 250px;
+	text-align: left;
+	z-index: 1;
+}
+.bolilla_text{
+	display: flex;
+	overflow: hidden;
+	justify-content: center; /* Centramos horizontalmente el contenido */
+    align-items: center;
+	width: 250px;
+	height: 250px;
+	position: absolute;
+	font-size: 55px;
+	color: aliceblue;
+	top: 10px;
+	left:5px;
+	z-index: 2; 
+	text-align: center;
+}
+.scroll_bolillero{
+	width: 150px;
+	height: 260px;
+	overflow-y: hidden; 
+	overflow-x: hidden; 
+}
+.box {
+	display: grid;
+	overflow: hidden;
+	position: relative;
+	width: 85px;
+	height: 52px;
+	border-bottom: 1px solid rgb(0, 238, 255);
+	justify-content: center; /* Centramos horizontalmente el contenido */
+    align-items: center;
+	font-size: 25px;
+	color: white;
+	left: 15px;
+}
+.box-sin-linea{
+	display: grid;
+	overflow: hidden;
+	position: relative;
+	width: 85px;
+	height: 52px;
+	justify-content: center; /* Centramos horizontalmente el contenido */
+    align-items: center;
+	font-size: 25px;
+	color: white;
+	left: 15px;
+}
+.mitexto{
+	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+	font-weight: 600;
+}
+.div_text_bolillas{
+	display: flex;
+	width: 350px;
+	height: 45px;
+}
+.div_text{
+	position: relative;
+	width: 350px;
+	height: 45px;
+}
+.select_bolilla{
+	position: absolute;
+	top: 448px;
+	width: 350px;
+	height: 85px;
+	background-color: white;
+}
+.bolas_miniatura{
+	display: flex;
+	width: 350px;
+	height: 40px;
+}
+.bolita_miniatura{
+	width: 40px;
+}
+.select_botones{
+	display: flex;
+	width: 350px;
+	height: 49px;
+	gap: 170px;
+}
+.select_botones_bolitas{
+	margin: 5px;
+	width: 80px;
+	height: 38px;
+	color: white;
+	background-color: #d6d8d7;
+	border: none;
+	font-size: 15px;
+	font-weight: 500;
+}
+.text_bolillas{
+	color: aliceblue;
+	text-align: center;
+	font-family: 'Roboto';
+	font-size: 30px;
+}
+.div_imagen_bolillas{
+	text-align: center;
+	height: 90px;
+}
+.imagen_bolillas{
+	width: 140px;
+}
+.div_boton_reiniciar{
+	display: grid;
+	overflow: hidden;
+	grid-template-columns: 30% 70%;
+	width: 340px;
+	height: 30px;
+}
+.boton_reiniciar{
+	width: 100px;
+	height: 30px;
+	color: white;
+	background-color: #4B4B4B;
+	border: none;
+	font-size: 15px;
+	border-radius: 10px;
+}
+.hablar{
+	position: relative;
+	width: 240px;
+	top: -15px;
+	left: 40px;
+	text-align: center;
+	color: aqua;
+	font-size: 13px;
+	font-weight: 200;
+}
+.div_check{
+	position: relative;
+	width: 40px;
+	top: 10px;
+	left: 25px;
+}
+
+.banner{
+	position: relative;
+	width: 310px;
+	left: 10px;
+	top: 4px;
+}
+
+@media screen and (max-width: 480px) {
+    .inputs_remplaza{
+		transform-origin: center top;
+        scale: 74%;
+	}
+	.contene{
+		transform-origin: center top;
+        scale: 74%;
+	}
+	html{
+		overflow: hidden;
+	}
+
+}
